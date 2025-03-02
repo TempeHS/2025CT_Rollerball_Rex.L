@@ -8,6 +8,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
 public GameObject winTextObject;
+public GameObject loseTextObject;
 public float speed = 0;
 public TextMeshProUGUI countText; 
 private Rigidbody rb; 
@@ -36,7 +37,6 @@ private float movementY;
            winTextObject.SetActive(true);
        }
     }
-
       private void FixedUpdate() 
    {
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);

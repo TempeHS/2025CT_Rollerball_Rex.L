@@ -35,7 +35,9 @@ private float movementY;
         if (count >= 11)
        {
            winTextObject.SetActive(true);
+           Destroy(GameObject.FindGameObjectWithTag("Enemy"));
        }
+       
     }
       private void FixedUpdate() 
    {
@@ -52,5 +54,15 @@ private float movementY;
          count = count + 1;
          SetCountText();
        }
+   }
+
+   private void OnCollisionEnter(Collision collision)
+   {
+    if(collision.gameObject.CompareTag("Enemy"))
+    {
+        Destroy(gameObject);
+        winTextObject.gameObject.SetActive(true);
+        winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
+    }
    }
 }

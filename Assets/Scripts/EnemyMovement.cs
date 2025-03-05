@@ -8,8 +8,6 @@ public class EnemyMovement : MonoBehaviour
 
     public Transform player;
     private NavMeshAgent navMeshAgent;
-    public float speed;
-    public bool IsColliding = false;
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();

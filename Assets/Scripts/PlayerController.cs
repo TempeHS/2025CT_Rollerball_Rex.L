@@ -31,21 +31,28 @@ private float movementY;
     
     void SetCountText() 
     {
-       countText.text =  "Count: " + count.ToString();
+        countText.text =  "Count: " + count.ToString();
         if (count >= 11)
+<<<<<<< Updated upstream
        {
            winTextObject.SetActive(true);
            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
        }
        
+=======
+        {
+            winTextObject.SetActive(true);
+        }
+>>>>>>> Stashed changes
     }
-      private void FixedUpdate() 
-   {
+    private void FixedUpdate() 
+    {
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed); 
-   }
+    }
 
+<<<<<<< Updated upstream
    void OnTriggerEnter(Collider other) 
    {
            if (other.gameObject.CompareTag("PickUp")) 
@@ -65,4 +72,15 @@ private float movementY;
         winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
     }
    }
+=======
+    void OnTriggerEnter(Collider other) 
+    {
+            if (other.gameObject.CompareTag("PickUp")) 
+        {
+        other.gameObject.SetActive(false);
+        count = count + 1;
+        SetCountText();
+        }
+    }
+>>>>>>> Stashed changes
 }

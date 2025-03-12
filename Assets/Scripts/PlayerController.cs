@@ -58,11 +58,11 @@ private float movementY;
 
    private void OnCollisionEnter(Collision collision)
    {
-    if(collision.gameObject.CompareTag("Enemy"))
-    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
         Destroy(gameObject);
         winTextObject.gameObject.SetActive(true);
         winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
-    }
+        }
    }
 }

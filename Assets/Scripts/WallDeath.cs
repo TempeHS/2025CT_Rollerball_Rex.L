@@ -11,6 +11,7 @@ public class WallDeath : MonoBehaviour
 
     void Start()
     {
+        winTextObject.SetActive(false);
     }
 
     void OnTriggerEnter(Collision collision) {

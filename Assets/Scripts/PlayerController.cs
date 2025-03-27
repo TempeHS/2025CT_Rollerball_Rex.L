@@ -11,11 +11,11 @@ public GameObject winTextObject;
 public GameObject loseTextObject;
 public float speed = 0;
 public TextMeshProUGUI countText; 
-private Rigidbody PlayerRB; 
+public Rigidbody PlayerRB; 
 private int count;
 private float movementX;
 private float movementY;
-public float jumpHeight;    
+    
 
     void Start()
     {
@@ -31,15 +31,6 @@ public float jumpHeight;
         movementY = movementVector.y; 
     }
 
-    void Update(InputValue jumpValue) 
-    {
-        Vector3 jumping = new Vector3 (0, jumpHeight, 0;);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayerRB.AddForce(jumpHeight);
-        }
-    }
     
     void SetCountText() 
     {
@@ -52,10 +43,19 @@ public float jumpHeight;
     }
     private void FixedUpdate() 
     {
+
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis ("Vertical");
+
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
 
         PlayerRB.AddForce(movement * speed); 
+
+        GetComponent<Rigidbody>().AddForce (movement * speed * Time.deltaTime);
+
+
     }
+    
 
     void OnTriggerEnter(Collider other) 
     {
@@ -76,4 +76,5 @@ public float jumpHeight;
         winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
         }
     }
+
 }

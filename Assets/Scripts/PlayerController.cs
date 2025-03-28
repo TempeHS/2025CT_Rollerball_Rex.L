@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour
 {
+public TextController textController;
 public GameObject winTextObject;
 public GameObject loseTextObject;
 public float speed = 0;
@@ -32,15 +34,7 @@ private float movementY;
     }
 
     
-    void SetCountText() 
-    {
-        countText.text =  "Count: " + count.ToString();
-        if (count >= 11)
-        {
-            winTextObject.SetActive(true);
-            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
-        }
-    }
+    
     private void FixedUpdate() 
     {
 
@@ -64,8 +58,10 @@ private float movementY;
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
+            
+
         }
-    }
+    } 
 
     private void OnCollisionEnter(Collision collision)
     {
